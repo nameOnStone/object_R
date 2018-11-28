@@ -1,0 +1,44 @@
+ls
+[0m[38;5;27mGene_2.0_Code_and_instruction[0m  [38;5;27mlearning_git[0m     summary_learning.Rmd  [38;5;27mTEST2[0m
+[38;5;27mggplot2_traning_files[0m          [38;5;27mR_S3_S4_zongjie[0m  [38;5;27mTEST1[0m
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ [K[wangduolin@fat01 practise_folder]$ [K[wangduolin@fat01 practise_folder]$ [K[wangduolin@fat01 practise_folder]$ cat >file <<'aaa'
+> wangduolin ni zuishuai
+> ni shi zuih[Kbangni [K[Kde[K[Kd[K[Kde 
+> wo sa dfa sdf
+> aaa
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ cat file 
+wangduolin ni zuishuai
+ni shi zuibangde 
+wo sa dfa sdf
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ c[Krm aaa
+rm: cannot remove ‘aaa’: No such file or directory
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ [K[wangduolin@fat01 practise_folder]$ rfr[K[K[Krm afi[K[K[Kfile 
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ rm file  echo C02C19AF && /usr/bin/env && echo 2DAC1A377[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm file [K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Krm file  echo C02C19AF && /usr/bin/env && echo 2DAC1A377[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm aaa[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat file  echo C02C19AF && /usr/bin/env && echo 2DAC1A377[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[29Pcat >file <<'aaa'
+wangduolin ni zuishuai
+ni shi zuibangde 
+wo sa dfa sdf
+aaa
+[K[A[C[C[C[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K:[K'
+> asdfas d
+> asdfasdf asd
+> asdfasdf aaa
+> asdf
+> asdf
+> aaa
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ cat file 
+asdfas d
+asdfasdf asd
+asdfasdf aaa
+asdf
+asdf
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ vim [K[K[K[Kcat [K[K[K[Krm file 
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ ls
+[0m[38;5;27mGene_2.0_Code_and_instruction[0m  [38;5;27mlearning_git[0m     summary_learning.Rmd  [38;5;27mTEST2[0m
+[38;5;27mggplot2_traning_files[0m          [38;5;27mR_S3_S4_zongjie[0m  [38;5;27mTEST1[0m
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ 老师[K[Kls:[K;pwd
+[0m[38;5;27mGene_2.0_Code_and_instruction[0m  [38;5;27mlearning_git[0m     summary_learning.Rmd  [38;5;27mTEST2[0m
+[38;5;27mggplot2_traning_files[0m          [38;5;27mR_S3_S4_zongjie[0m  [38;5;27mTEST1[0m
+/home/wangduolin/R/practise_folder
+]0;~/R/practise_folder[wangduolin@fat01 practise_folder]$ [K[wangduolin@fat01 practise_folder]$ 

@@ -1,0 +1,137 @@
+---
+title: "学习总结"
+author: "duolinzhenshuai"
+date: "2018/11/20" "2018/11/23"
+output: html_document
+---
+
+# stringr R包学习
+
+
+```{r}
+str_locate()
+#返回的是matrix，左边是开始位置，右边是结束位置；
+str_locate_all()
+#返回的是一个list，为什么起名字是all呢，大概是由于list可包含的范围更广泛些吧。
+```
+
+```{r}
+str_match()
+#返回的是个matrix(一个extract matched string)，
+#左边第一列是完成匹配组，紧随其后的是groups，
+#这点要和str_extract (它只返回完全匹配组,而且它返回的是character)区分好。
+```
+```{r}
+str_order()#这个返回的是数字向量（也就是新位置中的下标）
+str_sort()#这个则是直接返回应该的结果（我想你知道我在说什么）
+```
+
+```{r}
+str_pad()
+#函数是填补字符串函数;
+str_trim()
+#函数是修剪字符串的空格的，当然中间的空格是不管的；
+str_squish()
+#注意：这个单词很有意思，是一种将拟声词，就是将东西压扁的咯吱声；因此它不仅可以去掉两边的空格，还可以去掉中间多余的空格（很有意思）
+str_trunc()
+#函数返回的是省略号加上truncate之后的结果；懂了吗？
+```
+
+```{r}
+str_remove()
+#return remove matched patterns in a string 
+#这也就是说它接受正则表达式；
+#相反
+str_replace()
+# Replace matched patterns in a string.
+```
+
+```{r}
+str_split()
+#很明显就是撕开的意思；易懂吧。呵呵
+str_split_fixed()
+#它和上面的函数区别就在于输出端的接口不一样。后者返回matrix，前者则返回list
+```
+
+
+```{r}
+str_sub()
+#此函数用处很大，它分成两步，第一步是提取substring，
+#第二步是replace substring ，然后在被重新赋值，就等于改变了原来的字符串；（这一点很
+#奇怪，居然可以这样操作）
+str_sub()<-value
+#这个怎么这么难用，一直没搞懂；
+
+str_subset()#类似于linux中的grep；
+#这个函数是sub_detect()的wrapper，等于x[str_detect(x, pattern)]，也等于grep(pattern, x, value = TRUE)；
+#它检查是否为真，真则返回整个字符串，而不是局部字符串；
+str_which()
+#这个函数which(str_detect(x, pattern))的wrapper，grep(pattern, x)，这个函数返回的是下标；
+#另外，多提一嘴：grep()这个函数即可以返回下标也可以返回值（注意：也是全值）
+```
+
+```{r}
+str_to_title()
+#这个函数可以注意下；
+```
+R中的data.frame学习：
+
+data.frame中，可以把筛选条件当成一种下标，然后选取，这点要知道，不过，目前我的理解比较有限。仍旧有精进的空间；注意：这种方式只返回真值；
+```{r}
+iris[iris$Species==setosa]
+iris[iris$Species==setosa]<-'T'
+```
+注意：当你把data.frame直接转化成character时，是会直接全部转成的；请看例子
+
+```{r}
+a <- data.frame('a'=1:8,'b'=3:10)
+View(a)
+b <- as.character(a)
+View(b)
+print(b)
+c <- as.character(a$a)#这样才行；
+```
+所以，你需要特别指出才行；
+
+#鸟哥linux学习
+
+输出：
+命令标准输出重定向：> 
+若想累加到文件中去：>>
+若想将错误信息重定向到垃圾箱里：2>/dev/null
+若想将正确信息和错误信息都输入到一个文件中去的话，则是：2&>1
+
+输入：
+若不想由键盘输入而是由文件输入，则使用：
+```{bash}
+cat > file <file.txt
+#写的比较简单，看懂了吗？
+```
+还有个有比较特别的地方，如果是这样写的话：
+```{bash}
+cat >file <<'aaa'
+```
+这样，只要在输入是遇到aaa字符串就会终止，帅气吗？
+
+若想一次让计算机执行两次命令，则可使用：“；”
+```{bash}
+ls;pwd
+```
+但是，此种情况的前提是前后的命令之间并没有任何关系；
+
+（当一个命令成功时，则返回&?=0,失败时，则返回&?=1）
+若想有因果关系，则使用&&或||，
+cmd1&&cmd2表示若前面执行正确，则后面的命令执行，反之，则后面的命令不执行；
+cmd1||cmd2表示若前面命令执行正确，则后面的命令不执行，反之，则后面的命令执行；
+
+#小工具小工具小工具小工具：
+```{r}
+if(!requireNamespace('affy')){
+  install.packages('affy')
+}
+```
+它是用来看看包是不是存在的，如果不存在，则安装，存在，则拉倒！
+
+
+
+

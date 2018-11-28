@@ -1,0 +1,101 @@
+#I decide to build a class called God and put all 
+#behavior that we needed into class God
+library('R6')
+God <- R6Class(classname = "God",
+  public = list(
+    f_input_data=NULL,
+    f_filtered_data=NULL,
+    species=NULL,
+    c_extractGene=NULL,
+    initialize = function(data,species) {
+      self$f_input_data <- data
+      self$species <- species
+    },
+    #我们得先创建文件夹，这样比较合乎做法
+    create_report_dir=function(){
+      #暂时留空，方便后续添加代码
+    },
+    #箱线图画图方法
+    boxplot=function(data=self$f_input_data,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    #主成分分析画图方法
+    prcompplot=function(data=self$f_input_data,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    #皮尔森图画图方法
+    pearson_plot=function(data=self$f_input_data,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    
+    #以上是步骤过滤之前的方法
+    
+    #过滤方法
+    tidedata=function(data=self$f_input_data,FC=1,p_value=0.05){# mo ren zhi
+      self$f_filtered_data <- subset(x = data,subset = data$Sepal.Length>FC)
+      return(self$f_filtered_data)
+    },
+    
+    #以下是步骤过滤之后的方法
+    cluterplot=function(data=self$f_filtered_data,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    volcanoplot=function(data=self$f_filtered_data,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    
+    
+    #因为本质上做GO和KEGG的数据源都是基因或探针ID，因此，以下方法的输入接口宜做 
+    #改变成字符串向量。
+    
+    #从f_filtered_data中提取基因或探针名称的字符串向量
+    extractGenefun=function(data=f_filtered_data,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    enrichGOfun=function(data=c_extractGene,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    
+    #以下方法都是做完GO分析之后的方法，所以，一般情况在做GO之前此方法不宜调
+    #除非只是做测试。
+    barplotGO=function(data=GOresult,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    plotGOgraphfun=function(data=GOresult,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    
+    
+    #富集KEGG
+      #一般富集试验之间宜做geneID和Gene Symbol之间的转换，本人特意留住此方法。
+    biterfun=function(data=c_extractGene,pathofdownload='.'){
+      library('pathview')
+      library('DOSE')
+      library('clusterProfiler')
+      biter()
+      
+    },
+      #富集
+    enrichKEGGfun=function(data=c_extractGene,pathofdownload='.'){
+      #暂时留空，方便后续添加代码
+    },
+    
+    #以下方法都是在做完KEGG之后宜调用，因此不建议在enrichKEGGfun调用之前做。除非是做测试。
+    barplotKEGG=function(data=NULL){
+      
+    },
+    dotplotKEGG=function(data=NULL){
+      #暂时留空，方便后续添加代码
+    },
+    viewKEGG1fun=function(data=NULL){
+      #暂时留空，方便后续添加代码
+    },
+    get_htmlreport=function(data=NULL){
+      #暂时留空，方便后续添加代码
+    }
+  )
+)
+
+
+#以下是继承God类的类
+RNA <- R6Class(classname = 'RNA',inherit = God)

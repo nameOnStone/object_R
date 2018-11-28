@@ -1,0 +1,9 @@
+A <- R6Class('A',
+  public = list(
+  get_value = function(){
+    return(private$value)
+  }
+),
+  private = list(
+  value=1
+))

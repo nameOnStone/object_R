@@ -1,0 +1,316 @@
+---
+title: "关于R语言S3和S4型总结"
+author: "duolinzhenshuai"
+date: "2018年11月12日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1、认识R中的类对象和实例对象概念。不妨我们先重S3开始认知；
+
+
+以下是模板，我会依据下面模板来说明：
+
+```{r}
+human <- function(x) {
+  UseMethod('check')
+}
+check.default <- function(o) {
+  print('zheshimorenqingkuang')
+}
+check.man <- function(o) {
+  print('You are a man!')
+}
+check.woman <- function(o) {
+  print('You are a woman!')
+}
+
+```
+
+>human 是泛型函数（也就是“广接口”），当它接受到一个所谓的实例时，会判断实例的类属性，如果类属性值恰巧等于human中的check方法后缀值，就会调用此函数。空说不易。这里我们来段代码说明：
+
+>>假设我们创造一个人person1，名字叫小明，类属性为男性。然后我们用human这一广接口的泛型函数来检验它是不是男性。
+
+```{r}
+person1 <- structure('xiaoming',class='man')
+human(person1)
+```
+
+>结果已经明显显示出，它是男性，泛型函数根据实例类属性，来断定调用哪个方法（也就是是函数）
+
+>不妨再来一段代码，但我们决定将它的类属性设置成泛型函数里没有的方法，以此让泛型函数糊涂，不知道该调用谁。看看这段代码会发生什么事情。
+
+```{r}
+person2 <- structure('xiaohong',class='fei_nan_fei_nv')
+human(person2)
+```
+
+>上面的问题已经说清楚了。接下来，我们再来看看。它怎么传递参数的?
+
+>>泛型函数将实例对象当做参数传给泛型函数。然后泛型函数使用UseMethod找到方法后，并将实例当做参数继续传给方法。我们试着试验下：
+
+```{r}
+human <- function(x) {
+  UseMethod('check')
+}
+check.default <- function(o) {
+  print(o)
+}
+check.man <- function(o) {
+  print(o)
+}
+check.woman <- function(o) {
+  print('You are a woman!')
+}
+human(person2)
+```
+
+>>以上进一步证实我们的想法。
+
+
+2、再来，我们认知下S4型。
+
+直接上代码：
+
+```{r}
+product <- function(name, price, inventory) {
+　structure(list(name = name, 
+　　price = price, 
+　　inventory = inventory),
+　　class ="product")
+}
+```
+
+product就像是个类。之所以说像是因为它并不是类。而行为上正好能和类吻合。每个新生成的实例都有类属性class，属性值为“product”
+
+>>产生个实例看看：
+
+```{r}
+clothes <- product(name = 'Lining',price = 500,inventory = 10000)
+print(clothes)
+
+#如何访问实例的属性？
+clothes$name
+clothes$price
+```
+
+嗯，看起来还是不错的吧。行为及数据被包裹在类里面。实例天然的就带有类的方法或者说属性。
+
+好。既然你懂的上面的代码。那不妨我们继续拓展此类的属性（也就是一种行为）
+
+我们知道：print是一种泛型函数。但是它不能很好地泛型此类的实例（原因很简单，这个类很新啊），所以需要重新定义print针对此类的方法。还记得怎么拓展吗？
+
+```{r}
+print.product <- function(x) {
+  cat('<product>\n')
+  cat('name:',x$name,'\n')
+  cat("price:", x$price, "\n")
+　cat("inventory:", x$inventory, "\n")
+}
+print(clothes$name)
+```
+
+我们分析下以上代码的过程：首先，clothes是product类的实例。我们通过print拓展product类的行为，使之能满足我们的需求。当我们print此clothes实例时，同时意味我们调用了print.product的方法(为什么可以调用？因为它就是这样啊,此处我也有点晕。但是，先过。或许在实际写代码过程中就能理顺了）。
+
+不过，还有一点要说明：product类的实例对象所有的属性都只是初始值。其值仍旧可以被改变。比如：
+
+```{r}
+clothes$price <- clothes$price*10
+print(clothes$price)
+#当然我们还可以创建新的实例属性
+clothes$`color`<- 'white'
+print(clothes)
+# 此处为什么没被打印出来？？？
+```
+注意：此处并没有被print打印出来？？想想看为什么？原来是print方法的具体细节里并没有包含如何处理此属性。因此，需要调整代码
+
+好了，我们说明类和实例的属性问题，接下来，我们得说说S3型的类是如何继承的。上代码：
+
+```{r}
+percent <- function(x) {
+　stopifnot(is.numeric(x))
+　class(x) <- c("percent", "numeric")
+　x
+}
+```
+
+请仔细看看上段代码。一个实例产生时，它的类属性的值等于产生它的类名（真是绕口）
+
+参数x就是实例，实例自然的继承percent和numeric两个类，实例会先到percent中去找方法（也就是爸爸类），实在找不到就去numeric中去找（也就是爷爷类），特殊记忆：先找爸爸，感觉实在不行了就赶紧放大招，去找爷爷
+
+不过，很多类在产生实例时，先天的就去掉了类属性。而只剩下一些独有的属性（为什么要这样设计呢。嗯。一定有什么好处，只是我现在不知道）。比如sum。
+
+
+2.接下来我们说说S4型类
+
+```{r}
+validate_product <- function(object) {
+　errors <- c(
+　　if (length(object@name) != 1)
+　　　"Length of name should be 1"
+　　else if (is.na(object@name)) 
+　　　"name should not be missing value",
+　　if (length(object@price) != 1) 
+　　　"Length of price should be 1"
+　　else if (is.na(object@price)) 
+　　　"price should not be missing value"
+　　else if (object@price <= 0) 
+　　　"price must be positive",
+　　if (length(object@inventory) != 1) 
+　　　"Length of inventory should be 1"
+　　else if (is.na(object@inventory))
+　　　"inventory should not be missing value"
+　　else if (object@inventory < 0) 
+　　　"inventory must be non-negative")
+　if (length(errors) == 0) TRUE else errors
+}
+
+```
+
+我们分别说说它们的作用，Class参数是类名称，representation代表输入什么参数，以及要指定参数的类。prototype是指定默认值，validity=是检验函数,contains是继承哪些父类或字段；
+
+在S4型中，确定泛型函数的是,上代码
+
+```{r}
+
+setClass("Shape")
+setClass("Polygon", 
+　representation(sides = "integer"), 
+　contains = "Shape")
+setClass("Triangle", 
+　representation(a = "numeric", b = "numeric", c = "numeric"), 
+　prototype(a = 1, b = 1, c = 1, sides = 3L),
+　contains = "Polygon")
+setClass("Rectangle",
+　representation(a = "numeric", b = "numeric"),
+　prototype(a = 1, b = 1, sides = 4L),
+　contains = "Polygon")
+setClass("Circle",
+　representation(r = "numeric"),
+　prototype(r = 1, sides = Inf),
+　contains = "Shape")
+#代码说明从此处开始
+setGeneric('area',function(object){
+  standardGeneric('area')},valueClass = 'numeric')
+setMethod("area", signature("Triangle"), function(object) {
+　a <- object@a
+　b <- object@b
+　c <- object@c
+　s <- (a + b + c) / 2
+　sqrt(s * (s -a) *(s -b) * (s -c))
+})
+setMethod("area", signature("Rectangle"), function(object) {
+　object@a *object@b
+})
+## [1] "area"
+setMethod("area", signature("Circle"), function(object) {
+　pi *object@r ^2
+})
+
+```
+
+以上代码说明：前面的不再介绍。setGeneric是泛型函数，函数体是具体的动作，standardGeneric是方法分派的具体函数，valueClass是限制返回值，本代码限定返回值为numeric类。setMethod则是具体的被分派到的方法（自然地，函数体里就是关于如果计算的代码）
+
+好，我来点实例看看：
+
+```{r}
+triangle <- new("Triangle", a = 3, b = 4, c = 5)
+area(triangle)
+```
+
+接下来这段代码，或许会用到，只是我没太看懂，保存这里。
+
+```{r}
+setClass("Object", representation(height = "numeric"))
+setClass("Cylinder", contains = "Object")
+setClass("Cone", contains = "Object")
+setGeneric("volume", 
+　function(shape, object) standardGeneric("volume"))
+
+setMethod("volume", signature("Rectangle", "Cylinder"), 
+　function(shape, object) {
+　　shape@a * shape@b * object@height
+　})
+## [1] "volume"
+setMethod("volume", signature("Rectangle", "Cone"),
+　function(shape, object) {
+　　shape@a * shape@b * object@height /3
+　})
+#似乎是说你的参数的输入必须符合‘Rectangle类和另一个类才执行，但是，这怎么保证继承关系呢？是不是和前面的说法有些冲突了？
+#经过测试，确实如上述的怀疑所说。确实如此。
+```
+
+3.我们再来聊聊RC（reference Class）类，
+
+```{r}
+a <- setRefClass('A',fields = list(c='numeric',d='numeric'))
+```
+
+注意：它返回的是一个对象实例生成器。只是返回的生成器赋值给了a。看懂了吗？
+
+```{r}
+#创建个实例：
+f <- a$new(c=1,d=2)
+f
+```
+
+创建实例的方式有点奇怪是吧？！
+
+这里有一段话：“在 S3 系统和 S4 系统中，方法存储在环境中，而 RC 本身包含它的方法”
+所以似乎RC类好像封装的更好？
+
+```{r}
+Vehicle <- setRefClass("Vehicle", 
+　fields = list(position = "numeric", distance = "numeric"),
+　methods = list(move = function(x) {
+　　stopifnot(is.numeric(x))
+　　position <<- position + x
+　　distance <<- distance + abs(x)
+　}))
+```
+
+看看它的参数methods。这个挺好的。可以定义多种方法。不过，子类是否也带有父类中的方法呢？我没试验。
+
+4.接下来，看看R6类，R6类是RC的加强版。是个包。需要安装。
+
+```{r}
+library(R6)
+Vehicle <- R6Class("Vehicle", 
+　public = list(
+　　name = NA,
+　　model = NA,
+　　initialize = function(name, model) {
+　　　self$name <- name
+　　　 self$model <- model
+　　},
+　　move = function(movement) {
+　　　private$start()
+　　　private$position <- private$position + movement
+　　　private$stop()
+　　},
+　　get_position = function() {
+　　　print(private$position)
+　　}
+　),
+　private = list(
+    
+　　position = 0,
+　　value1=1,
+　　speed = 0,
+　　start = function() {
+　　　cat(self$name, "is starting\n")
+　　　private$speed <- 50
+　　},　stop = function() {
+　　　cat(self$name, "is stopping\n")
+　　　private$speed <- 0
+　　}
+　))
+```
+
+它分为公有字段和私有字段。私有行为在实例那里是不可以被访问到的。办法定义在类中，这样的“OOP”比较容易使用。不过，前面的S3等等仍旧是需要了解的。这样才较好的比较出“OOP”的优点。
+
+
+prototype(name = "Unnamed", price = NA_real_, inventory = 0L))

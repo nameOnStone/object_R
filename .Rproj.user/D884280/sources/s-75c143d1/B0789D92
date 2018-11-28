@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542693522505.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B0789D92",
+    "lastKnownWriteTime" : 1542957943,
+    "last_content_update" : 1542957943814,
+    "path" : "~/R/practise_folder/summary_learning.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "126,13",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
