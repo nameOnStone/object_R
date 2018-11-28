@@ -1,7 +1,7 @@
 
 #---------------------------本脚本坚持几个原则—----------------------------------------
 # 1.接口：坚持接口数据类型通用化，坚持接口接入后立即做接口检查，有可能的话应尽量窄化接口；
-# 2.变量：坚持起名字时，增加数据类型，坚持词之间用“_”链接；
+# 2.变量：坚持起名字时，增加数据类型，坚持词之间用“_”连接；
 # 3.数据与画图之间的关系：坚持数据的处理与画图之间有明显的分割，避免数据或变量交叉以至于影响到测试；
 # 4.包：应坚持“不轻易升级包”的原则，以免脚本出现问题；
 #---------------------------本脚本坚持的几个原则---------------------------------------
@@ -12,8 +12,13 @@ if(!requireNamespace('R6')){
 if(!requireNamespace('tidyverse')){
   install.packages('tidyverse')
 }
+if(!requireNamespace('magrittr')){
+  install.packages('magrittr')
+}
 library('R6')
 library('tidyverse')
+#为增加代码简洁、易于理解，遂增加此包
+library('magrittr')
 #I decide to build a class called God and put all 
 #behavior that we needed into God's attribute
 God <- R6Class(classname = "God",
@@ -24,27 +29,40 @@ God <- R6Class(classname = "God",
                  c_extractGene=NULL,
                  box_plot = NULL,
                  initialize = function(f_unhandled_data,f_name_data,c_species) {
+                   #先将几个不合法的符号（如：‘ ’，‘-’，‘.’）改成‘_’，防止由于很多读进来的数据因为特殊符号问题而不能跑脚本；
+                   colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = ' +',replacement = '_' )
+                   colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = '\\.+',replacement = '_' )
+                   colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = '-+',replacement = '_' )
                    #接口检查
-                   stopifnot(is.data.frame(f_unhandled_data)&assertthat::has_name(f_unhandled_data,'Fold Change')&is.character(c_species))
+                   stopifnot(is.data.frame(f_unhandled_data)&is.data.frame(f_name_data)&has_name(f_unhandled_data,'Fold_Change')&all(has_name())&is.character(c_species))
+                   f_unhandled_data%>%{
+                     stopifnot(all(is.data.frame(.),
+                                   all(has_name(x = .,which = c('Fold_Change','P_val','FDR_P_val','Gene_Symbol')))))
+                     
+                   }
+                   f_name_data%>%{
+                     stopifnot(all(is.data.frame(.),
+                                   all(has_name(x=.,which=c('Chip_ID','Sample_ID','Group_Name')))))
+                   }
+                   #检查完成
+                   
                    #接下来对数据源做必要的处理
                    #先改下名称
                    for(i in 1:nrow(f_name_data)){
                      colnames(f_unhandled_data) <- str_replace(string = colnames(f_unhandled_data),pattern = paste0('^',f_name_data$Chip_ID[i],'.*ignal$'),replacement = paste0(f_name_data$Sample_ID,'_signal'))
                    }
-                   #对数据源的列名中带有'-'的替换成'_'，免得在后面的数据引用时，出现不可预知的故障；
-                   colnames(f_unhandled_data) <- str_replace(string = colnames(f_unhandled_data),pattern = '-',replacement = '_')
                    #增加UP&DOWN列
-                   f_unhandled_data[f_unhandled_data$`Fold Change`>=0,'UP_DOWN']<-'UP'
-                   f_unhandled_data[f_unhandled_data$`Fold Change`<0,'UP_DOWN']<-'DOWN'
+                   f_unhandled_data[f_unhandled_data$`Fold_Change`>=0,'UP_DOWN']<-'UP'
+                   f_unhandled_data[f_unhandled_data$`Fold_Change`<0,'UP_DOWN']<-'DOWN'
                    #增加log值列
-                   for(j in 1:length(f_unhandled_data$`Fold Change`)){
-                     #若 Fold Change为正值，则直接取log2值
-                     if(f_unhandled_data$`Fold Change`[j]>=0){
-                       f_unhandled_data[f_unhandled_data$`Fold Change`[j],'log2(Fold Change)'] <- log2(f_unhandled_data$`Fold Change`[j])
+                   for(j in 1:length(f_unhandled_data$`Fold_Change`)){
+                     #若 Fold_Change为正值，则直接取log2值
+                     if(f_unhandled_data$`Fold_Change`[j]>=0){
+                       f_unhandled_data[f_unhandled_data$`Fold_Change`[j],'log2(Fold_Change)'] <- log2(f_unhandled_data$`Fold_Change`[j])
                      }
-                     #若 Fold Change为负值，则需取负倒数后才可取log2值
-                     else if(f_unhandled_data$`Fold Change`[j]<0){
-                       f_unhandled_data[f_unhandled_data$`Fold Change`[j],'log2(Fold Change)'] <- log2(-1/f_unhandled_data$`Fold Change`[j])
+                     #若 Fold_Change为负值，则需取负倒数后才可取log2值
+                     else if(f_unhandled_data$`Fold_Change`[j]<0){
+                       f_unhandled_data[f_unhandled_data$`Fold_Change`[j],'log2(Fold_Change)'] <- log2(-1/f_unhandled_data$`Fold_Change`[j])
                      }
                    }
                    #以上完成了必要的处理；
@@ -96,22 +114,25 @@ God <- R6Class(classname = "God",
                    #接口检查
                    stopifnot(all(is.data.frame(data)))
                    if(!any(is.na(pathofdownload),is.null(pathofdownload))){port <- T}
-                   
-                   data1 <- test$f_handled_data
-                   aa <- grep(x=colnames(data1),pattern = '.*signal$',value = T)
-                   cc <- NULL
-                   for (i in aa){
-                     bb <- data_frame(value=(data1[[i]]),name=i,group=c('a'))
-                     cc <- rbind(bb,cc)
+                   #magrittr包的代码规则，利于节省中间变量,类似于linux中的管道符，不过貌似不熟悉的人感觉上挺难看懂。鱼和熊掌难兼得
+                   c_extract_samplename <- test$f_handled_data %>% colnames() %>% grep(x=,pattern = '.*signal$',value = T) 
+                   f_reconstruct <- NULL
+                   for (i in c_extract_samplename){
+                     print(i)
+                     bb <- data_frame(value=(test$f_handled_data[[i]]),name=i,group='a')
+                     f_reconstruct <- rbind(bb,f_reconstruct)
                    }
-                   cc$value <- round(cc$value,2)
-                   cc$name <- str_replace(cc$name,'_signal','')
+                   #保留小数点后两位
+                   f_reconstruct$value <- round(f_reconstruct$value,2)
+                   f_reconstruct$name <- str_replace(f_reconstruct$name,'_signal','')
                    aa <- str_replace(string = aa,'_signal','')
-                   cc[name==a,'groupname']
+                   f_reconstruct[name==a,'groupname']
                    #ggplot的接口只接受data.frame,所以,输入前不妨检查下接口的数据类型
-                   stopifnot(all(is.data.frame(cc),is.numeric(cc$value),is.character(cc$name)))
-                   box_plot <- ggplot(data = cc,aes(x = name,y = value,color=))+geom_boxplot()+theme_light()
+                   stopifnot(all(is.data.frame(f_reconstruct),is.numeric(f_reconstruct$value),is.character(f_reconstruct$name)))
+                   #画图
+                   box_plot <- ggplot(data = f_reconstruct,aes(x = name,y = value,color=))+geom_boxplot()+theme_light()
                    if(port==T){ggsave('box_plot.svg',path = pathofdownload)}
+                   #将画图的结果赋值给实例属性，方便查看调用
                    self$box_plot <- box_plot
                    
                  },
@@ -145,10 +166,10 @@ God <- R6Class(classname = "God",
                  #改变成字符串向量。
                  
                  #从f_filtered_data中提取基因或探针名称的字符串向量
-                 extract_Gene_fun=function(data=f_filtered_data,pathofdownload='.'){
+                 fun_extract_Gene=function(data=f_filtered_data,pathofdownload='.'){
                    #暂时留空，方便后续添加代码
                  },
-                 enrich_GO_fun=function(data=c_extractGene,pathofdownload='.'){
+                 fun_enrich_GO=function(data=c_extractGene,pathofdownload='.'){
                    #暂时留空，方便后续添加代码
                  },
                  
@@ -157,22 +178,22 @@ God <- R6Class(classname = "God",
                  draw_bar_plot_GO=function(data=GOresult,pathofdownload='.'){
                    #暂时留空，方便后续添加代码
                  },
-                 plot_GO_graph_fun=function(data=GOresult,pathofdownload='.'){
+                 fun_plot_GO=function(data=GOresult,pathofdownload='.'){
                    #暂时留空，方便后续添加代码
                  },
                  
                  
                  #富集KEGG
                  #一般富集试验之间宜做geneID和Gene Symbol之间的转换，本人特意留住此方法。
-                 biter_fun=function(data=c_extractGene,pathofdownload='.'){
+                 fun_biter=function(data=c_extractGene,pathofdownload='.'){
                    library('pathview')
                    library('DOSE')
                    library('clusterProfiler')
-                   biter()
+                   
                    
                  },
                  #富集
-                 enrich_KEGG_fun=function(data=c_extractGene,pathofdownload='.'){
+                 fun_enrich_KEGG=function(data=c_extractGene,pathofdownload='.'){
                    #暂时留空，方便后续添加代码
                  },
                  
@@ -180,7 +201,7 @@ God <- R6Class(classname = "God",
                  draw_bar_plot_KEGG=function(data=NULL){
                    
                  },
-                 dot_plot_KEGG=function(data=NULL){
+                 draw_dot_plot_KEGG=function(data=NULL){
                    #暂时留空，方便后续添加代码
                  },
                  view_KEGG1_fun=function(data=NULL){
