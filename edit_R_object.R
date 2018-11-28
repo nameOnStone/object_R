@@ -34,7 +34,6 @@ God <- R6Class(classname = "God",
                    colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = '\\.+',replacement = '_' )
                    colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = '-+',replacement = '_' )
                    #接口检查
-                   stopifnot(is.data.frame(f_unhandled_data)&is.data.frame(f_name_data)&has_name(f_unhandled_data,'Fold_Change')&all(has_name())&is.character(c_species))
                    f_unhandled_data%>%{
                      stopifnot(all(is.data.frame(.),
                                    all(has_name(x = .,which = c('Fold_Change','P_val','FDR_P_val','Gene_Symbol')))))
@@ -42,29 +41,41 @@ God <- R6Class(classname = "God",
                    }
                    f_name_data%>%{
                      stopifnot(all(is.data.frame(.),
-                                   all(has_name(x=.,which=c('Chip_ID','Sample_ID','Group_Name')))))
+                                   all(has_name(x = .,which=c('Chip_ID','Sample_ID','Group_Name')))))
                    }
+                   stopifnot(is.character(c_species))
                    #检查完成
                    
                    #接下来对数据源做必要的处理
                    #先改下名称
                    for(i in 1:nrow(f_name_data)){
-                     colnames(f_unhandled_data) <- str_replace(string = colnames(f_unhandled_data),pattern = paste0('^',f_name_data$Chip_ID[i],'.*ignal$'),replacement = paste0(f_name_data$Sample_ID,'_signal'))
+                     colnames(f_unhandled_data) <- str_replace(string = colnames(f_unhandled_data),
+                                                               pattern = paste0('^',f_name_data$Chip_ID[i],'.*ignal$'),
+                                                               replacement = paste0(f_name_data$Sample_ID[i],'_signal'))
                    }
-                   #增加UP&DOWN列
+                   
+                   #增加UP_DOWN列
                    f_unhandled_data[f_unhandled_data$`Fold_Change`>=0,'UP_DOWN']<-'UP'
                    f_unhandled_data[f_unhandled_data$`Fold_Change`<0,'UP_DOWN']<-'DOWN'
+                   #通过system.time函数测试，使用sapply函数的CPU时间是for循环的250倍以上，所以改用sapply
                    #增加log值列
-                   for(j in 1:length(f_unhandled_data$`Fold_Change`)){
+                   #message('The Handing need some times,please wait patiently')
+                   #for(j in 1:length(f_unhandled_data$`Fold_Change`)){
                      #若 Fold_Change为正值，则直接取log2值
-                     if(f_unhandled_data$`Fold_Change`[j]>=0){
-                       f_unhandled_data[f_unhandled_data$`Fold_Change`[j],'log2(Fold_Change)'] <- log2(f_unhandled_data$`Fold_Change`[j])
-                     }
+                     #if(f_unhandled_data$`Fold_Change`[j]>=0){
+                       #f_unhandled_data[f_unhandled_data$`Fold_Change`[j],'log2(Fold_Change)'] <- log2(f_unhandled_data$`Fold_Change`[j])
+                     #}
                      #若 Fold_Change为负值，则需取负倒数后才可取log2值
-                     else if(f_unhandled_data$`Fold_Change`[j]<0){
-                       f_unhandled_data[f_unhandled_data$`Fold_Change`[j],'log2(Fold_Change)'] <- log2(-1/f_unhandled_data$`Fold_Change`[j])
-                     }
-                   }
+                    # else if(f_unhandled_data$`Fold_Change`[j]<0){
+                       #f_unhandled_data[f_unhandled_data$`Fold_Change`[j],'log2(Fold_Change)'] <- log2(-1/f_unhandled_data$`Fold_Change`[j])
+                     #}
+                   #}
+                   #通过system.time函数测试，使用sapply函数的CPU时间是for循环的250倍以上，所以改用sapply
+                   f_unhandled_data$Fold_Change %>% sapply(X = ,FUN = function(x){
+                     if(x>=0){log2(x)}
+                     else if(x<0){log2(-1/x)}
+                   }) -> f_unhandled_data[,'log2(Fold_Change)']
+                   
                    #以上完成了必要的处理；
                    #把处理完成的数据源赋值给实例属性，方便引用；
                    self$f_handled_data <- f_unhandled_data
@@ -75,7 +86,7 @@ God <- R6Class(classname = "God",
                    #暂时留空，方便后续添加代码
                    
                  },
-                 create_zhenzhongtuijian_report_dir=function(nameofreport='TEST',pathofmkdir='.',comp_name='test_compare_name'){
+                 create_zhenzhong_report_dir=function(nameofreport='TEST',pathofmkdir='.',comp_name='test_compare_name'){
                    current_path <- getwd()#不应变换工作目录
                    setwd(pathofmkdir)#两个作用：1，检查路径是否存在（如若不存在，则会直接报错） 2，setwd本身的作用
                    dir.create(paste(pathofmkdir,nameofreport,sep='/'), showWarnings = FALSE)
@@ -114,7 +125,7 @@ God <- R6Class(classname = "God",
                    #接口检查
                    stopifnot(all(is.data.frame(data)))
                    if(!any(is.na(pathofdownload),is.null(pathofdownload))){port <- T}
-                   #magrittr包的代码规则，利于节省中间变量,类似于linux中的管道符，不过貌似不熟悉的人感觉上挺难看懂。鱼和熊掌难兼得
+                   #magrittr包的代码规则，利于节省中间变量，类似于linux中的管道符，不过貌似不熟悉的人感觉上挺难看懂。鱼和熊掌难兼得
                    c_extract_samplename <- test$f_handled_data %>% colnames() %>% grep(x=,pattern = '.*signal$',value = T) 
                    f_reconstruct <- NULL
                    for (i in c_extract_samplename){

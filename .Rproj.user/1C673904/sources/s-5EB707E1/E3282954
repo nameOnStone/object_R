@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1543455686391.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "691860600",
+    "id" : "E3282954",
+    "lastKnownWriteTime" : 1543476125,
+    "last_content_update" : 1543476125075,
+    "path" : "E:/duolin_work_dictionary/About_workflows/edit_object_R_code/edit_R_object.R",
+    "project_path" : "edit_R_object.R",
+    "properties" : {
+        "cursorPosition" : "88,33",
+        "scrollLine" : "83"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
