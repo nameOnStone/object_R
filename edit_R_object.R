@@ -1,10 +1,10 @@
 
-#---------------------------本脚本坚持几个原则—----------------------------------------
+#---------------------------------本脚本坚持几个原则-----------------------------------------
 # 1.接口：坚持接口数据类型通用化，坚持接口接入后立即做接口检查，有可能的话应尽量窄化接口；
 # 2.变量：坚持起名字时，增加数据类型，坚持词之间用“_”连接；
 # 3.数据与画图之间的关系：坚持数据的处理与画图之间有明显的分割，避免数据或变量交叉以至于影响到测试；
-# 4.包：应坚持“不轻易升级包”的原则，以免脚本出现问题；
-#---------------------------本脚本坚持的几个原则---------------------------------------
+# 4.包：坚持“不轻易升级包”的原则，以免脚本出现问题；
+# 5.坚持可维护性、可扩展性、可读性、低耦合性；
 #若未安装下列的包，则自动安装；
 if(!requireNamespace('R6')){
   install.packages('R6')
@@ -15,12 +15,17 @@ if(!requireNamespace('tidyverse')){
 if(!requireNamespace('magrittr')){
   install.packages('magrittr')
 }
+if(!requireNamespace('svglite')){
+  install.packages('svglite')
+}
 library('R6')
 library('tidyverse')
-#为增加代码简洁、易于理解，遂增加此包
+#为增加代码简洁、易于理解，遂增加此包；
 library('magrittr')
+#为了产出svg格式图，增加此包；
+library('svglite')
 #I decide to build a class called God and put all 
-#behavior that we needed into God's attribute
+#behavior that we needed into God's attribute;
 God <- R6Class(classname = "God",
                public = list(
                  f_handled_data=NULL,
@@ -28,26 +33,31 @@ God <- R6Class(classname = "God",
                  c_species=NULL,
                  c_extractGene=NULL,
                  box_plot = NULL,
+                 f_name_data = NULL,
+                 f_handled_box_plot=NULL,
                  initialize = function(f_unhandled_data,f_name_data,c_species) {
                    #先将几个不合法的符号（如：‘ ’，‘-’，‘.’）改成‘_’，防止由于很多读进来的数据因为特殊符号问题而不能跑脚本；
                    colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = ' +',replacement = '_' )
                    colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = '\\.+',replacement = '_' )
                    colnames(f_unhandled_data) %<>% str_replace_all(string =,pattern = '-+',replacement = '_' )
-                   #接口检查
+                   colnames(f_name_data) %<>% str_replace_all(string =,pattern = ' +',replacement = '_' )
+                   colnames(f_name_data) %<>% str_replace_all(string =,pattern = '\\.+',replacement = '_' )
+                   colnames(f_name_data) %<>% str_replace_all(string =,pattern = '-+',replacement = '_' )
+                   
+                   #------------------------------------接口检查----------------------------------------
                    f_unhandled_data%>%{
-                     stopifnot(all(is.data.frame(.),
-                                   all(has_name(x = .,which = c('Fold_Change','P_val','FDR_P_val','Gene_Symbol')))))
-                     
+                     stopifnot(all(is.data.frame(.),all(tibble::has_name(x =.,name = c('Fold_Change','P_val','FDR_P_val','Gene_Symbol')))))
                    }
+                   
                    f_name_data%>%{
                      stopifnot(all(is.data.frame(.),
-                                   all(has_name(x = .,which=c('Chip_ID','Sample_ID','Group_Name')))))
+                                   all(tibble::has_name(x = .,name=c('Chip_ID','Sample_ID','Group_Name')))))
                    }
                    stopifnot(is.character(c_species))
                    #检查完成
                    
                    #接下来对数据源做必要的处理
-                   #先改下名称
+                   #先改下名字
                    for(i in 1:nrow(f_name_data)){
                      colnames(f_unhandled_data) <- str_replace(string = colnames(f_unhandled_data),
                                                                pattern = paste0('^',f_name_data$Chip_ID[i],'.*ignal$'),
@@ -79,13 +89,14 @@ God <- R6Class(classname = "God",
                    #以上完成了必要的处理；
                    #把处理完成的数据源赋值给实例属性，方便引用；
                    self$f_handled_data <- f_unhandled_data
+                   self$f_name_data <- f_name_data
                    self$c_species <- c_species
-                 },
+                 },#初始化函数结束；
                  #我们得先创建文件夹，这样比较合乎逻辑
                  create_report_dir=function(){
                    #暂时留空，方便后续添加代码
                    
-                 },
+                 },#创造文件夹函数结束；
                  create_zhenzhong_report_dir=function(nameofreport='TEST',pathofmkdir='.',comp_name='test_compare_name'){
                    current_path <- getwd()#不应变换工作目录
                    setwd(pathofmkdir)#两个作用：1，检查路径是否存在（如若不存在，则会直接报错） 2，setwd本身的作用
@@ -122,31 +133,54 @@ God <- R6Class(classname = "God",
                  },
                  #箱线图画图方法
                  draw_box_plot=function(data=self$f_handled_data,pathofdownload=li_mkdir$path_exploratory_BoxWhisker){
-                   #接口检查
+                   #画box_plot图，需要二组数据源，1：f_handled_data(用来获取每组样品的数值),2:f_name_data(用来获取分组信息)
+                   #----------------------------------------接口检查-----------------------------------------
                    stopifnot(all(is.data.frame(data)))
                    if(!any(is.na(pathofdownload),is.null(pathofdownload))){port <- T}
+                   else(port <- 'empty')
                    #magrittr包的代码规则，利于节省中间变量，类似于linux中的管道符，不过貌似不熟悉的人感觉上挺难看懂。鱼和熊掌难兼得
-                   c_extract_samplename <- test$f_handled_data %>% colnames() %>% grep(x=,pattern = '.*signal$',value = T) 
+                   #-------------------------------------数据源开始处理--------------------------------------------------
+                   c_extract_samplename <- self$f_handled_data %>% colnames() %>% grep(x=,pattern = '.*signal$',value = T) 
+                   
                    f_reconstruct <- NULL
                    for (i in c_extract_samplename){
-                     print(i)
-                     bb <- data_frame(value=(test$f_handled_data[[i]]),name=i,group='a')
-                     f_reconstruct <- rbind(bb,f_reconstruct)
-                   }
+                     bb <- data_frame(Name=i,Value=(self$f_handled_data[[i]]))
+                     f_reconstruct <- rbind(f_reconstruct,bb)
+                     }#循环结束
+                   #我需要根据f_reconstruct中的Name列再次增加一列Group，方便在画bar_plot时，可以区分把分组信息用颜色标记出来
+                   #我是根据f_name_data和f_reconstruct此两组数据框中的信息作出增加f_reconstruct的第三列的Group组；
+                   message('The handling data need some times,Please wait!')
+                   str_remove(string = f_reconstruct$Name,pattern = '_signal')%>%
+                   sapply(X = .,FUN = function(i){
+                        self$f_name_data[[which(self$f_name_data$Sample_ID==i),'Group_Name']]
+                           })->f_reconstruct[,'Group']
                    #保留小数点后两位
-                   f_reconstruct$value <- round(f_reconstruct$value,2)
-                   f_reconstruct$name <- str_replace(f_reconstruct$name,'_signal','')
-                   aa <- str_replace(string = aa,'_signal','')
-                   f_reconstruct[name==a,'groupname']
+                   f_reconstruct$Value <- round(f_reconstruct$Value,2)
+                   #要画图了，所以还是要把signal这个字符串尾巴去掉；
+                   f_reconstruct$Name <- str_remove(f_reconstruct$Name,'_signal')
+                   #-------------------------------------数据源处理完成----------------------------------------
+                   
+                   #以上代码已经完成了数据处理，应当将处理好的数据源赋值给实例属性，以便后续有人需要更改图片时可调用画图的数据源
+                   #不过，这里有一点需要注意，画box_plot不应当是成对画的，而应该是整个项目的数据一起画才对，所以此处代码从逻辑上是不是有问题的呢？
+                   #仍需要厘清。暂时先这样，留下Mark，方便提醒自己。
+                   self$f_handled_box_plot <- f_reconstruct
                    #ggplot的接口只接受data.frame,所以,输入前不妨检查下接口的数据类型
-                   stopifnot(all(is.data.frame(f_reconstruct),is.numeric(f_reconstruct$value),is.character(f_reconstruct$name)))
-                   #画图
-                   box_plot <- ggplot(data = f_reconstruct,aes(x = name,y = value,color=))+geom_boxplot()+theme_light()
-                   if(port==T){ggsave('box_plot.svg',path = pathofdownload)}
+                   #----------------------------------------接口检查----------------------------------------------
+                   stopifnot(all(is.data.frame(f_reconstruct),
+                                 is.numeric(f_reconstruct$Value),
+                                 is.character(f_reconstruct$Name),
+                                 is.character(f_reconstruct$Group)))
+                   #--------------------------------------开始画图---------------------------------------------
+                   box_plot <- ggplot(data = f_reconstruct,aes(x = Name,y = Value,color=Group))+geom_boxplot()+theme_light()
+                   if(port==T){
+                    ggsave(nameofpic,path = pathofdownload)
+                     message(' has been completed!')
+                   }
+                   #--------------------------------------结束画图---------------------------------------------
                    #将画图的结果赋值给实例属性，方便查看调用
                    self$box_plot <- box_plot
-                   
-                 },
+                   return(box_plot)
+                 },#draw_box_plot方法结束；
                  #主成分分析画图方法
                  draw_prcomp_plot=function(data=self$f_handled_data,pathofdownload='.'){
                    #暂时留空，方便后续添加代码
@@ -159,8 +193,8 @@ God <- R6Class(classname = "God",
                  #以上是步骤过滤之前的方法
                  
                  #过滤方法
-                 tidy_data=function(data=self$f_handled_data,FC=1,p_value=0.05){# mo ren zhi
-                   
+                 filter_data=function(data=self$f_handled_data,FC=1,p_value=0.05){# mo ren zhi
+                   #暂时留空，方便后续添加代码
                  },
                  
                  #以下是步骤过滤之后的方法

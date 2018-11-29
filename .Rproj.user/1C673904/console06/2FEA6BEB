@@ -1,28 +1,142 @@
-[0m[0K]0;a@DESKTOP-G61AK8V: ~[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$[0K[22G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ d[0K[22G[?25h[23G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ di[0K[23G[?25h[24G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ dir[0K[?25h([0K)[0K[?25l
->[0K[3G[?25h[?25l
->[0K[3G[?25h[?25l
->[0K[3G[?25h[?25l> a[0K[?25h[?25l
--bash: syntax error near unexpected token `a'[0K
-[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$[0K[22G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ d[0K[?25h[?25lf[0K[23G[?25h[24G[?25l
-[0K[?25hFilesystem     1K-blocks      Used Available Use% Mounted on[0K[?25l
-rootfs         157287420 117091624  40195796  75% /[0K
-none           157287420 117091624  40195796  75% /dev[0K
-none           157287420 117091624  40195796  75% /run[0K
-none           157287420 117091624  40195796  75% /run/lock[0K
-none           157287420 117091624  40195796  75% /run/shm[0K
-none           157287420 117091624  40195796  75% /run/user[0K
-C:             157287420 117091624  40195796  75% /mnt/c[0K
-E:             262145020 149444864 112700156  58% /mnt/e[0K
-F:             419431420 142364728 277066692  34% /mnt/f[0K
-G:             137893884  51380208  86513676  38% /mnt/g[0K
-[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$[0K[22G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ l[0K[?25hs[0K[?25l
-[0K[?25haaa.py[0K[?25l
-[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$[0K[22G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ l[0K[?25hs[0K[?25l
-[0K[?25haaa.py[0K[?25l
-[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m~[0m$ l[0K[?25hs[0K[?25l
-[0K[?25haaa.py[0K[?25l
-]0;a@DESKTOP-G61AK8V: /mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/e[0K[?25l
-it_object_R_code[0m$[0K[19G[?25h[?25l[0;34;94mit_object_R_code[0m$ l[0K[19G[?25h[20G[?25l[0;34;94mit_object_R_code[0m$ ls[0K[?25h[?25l
-[0K[?25h[0;32;92medit_R_object.R[0m  [0;32;92medit_object_R_code.Rproj[0m[0K[?25l
-[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/e[0Kd
-it_object_R_code[0m$[0K[19G[?25h
+[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ i[0K[?25hp[0Ky[0Kt[0Kh[0Ko[0Kn[0K[?25l
+[0K[?25h[?25l
+Command 'ipython' not found, but can be installed with:[0K
+[0K
+sudo apt install ipython[0K
+[0K
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ p[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ a[0K[?25hu[0K[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ a[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ s[0K[?25hu[0Ka[0K[?25lo[0K[88G[?25h[89G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ suaod[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ suao[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sua[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ su[0K[?25hd[0Ko[0K[90G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo a[0K[?25hp[0Kt[0K[94G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt i[0K[?25hn[0Ks[0K[?25lt[0K[97G[?25h[98G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt insta[0K[?25hl[0Kl[0K[102G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install i[0K[?25hy[0K[?25lp[0K[104G[?25h[105G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install iypt[0K[?25hr[0Kh[0K[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install iyptr[0K[108G[?25h[107G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install iypt[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install iyp[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install iy[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install i[0K[?25hp[0Ky[0Kt[0Kh[0Ko[0Kn[0K[?25l
+[0K[?25h[?25l[sudo] password for a:[0K[1G[?25h[24G[?25l
+[0K[?25h[?25lReading package lists... 0%[0K[1G[?25hReading package lists... Done[0K[?25l
+[0K[?25h[?25lBuilding dependency tree... 0%[0K[1G[?25h[?25lBuilding dependency tree... 50%[0K[1G[?25hBuilding dependency tree[0K[?25l
+Reading state information... Done[0K
+[0K[?25hSome packages could not be installed. This may mean that you have[0K[?25l
+requested an impossible situation or if you are using the unstable[0K
+distribution that some required packages have not yet been created[0K
+or been moved out of Incoming.[0K
+The following information may help to resolve the situation:[0K
+[0K
+The following packages have unmet dependencies:[0K
+[0K[?25h ipython : Depends: python-ipython (= 5.5.0-1) but it is not going to be installed[0K[?25l
+[0K[?25hE: Unable to correct problems, you have held broken packages.[0K[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install ipython[0K[?25h[108G[107G[106G[105G[104G[103G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install python[0K[102G[?25h[?25l
+[0K[?25h[?25lReading package lists... 0%[0K[1G[?25hReading package lists... Done[0K[?25l
+[0K[?25h[?25lBuilding dependency tree... 50%[0K[1G[?25hBuilding dependency tree[0K[?25l
+Reading state information... Done[0K
+[0K[?25hPackage python is not available, but is referred to by another package.[0K[?25l
+This may mean that the package is missing, has been obsoleted, or[0K
+is only available from another source[0K
+However the following packages replace it:[0K
+  2to3[0K
+[0K
+[0K[?25hE: Package 'python' has no installation candidate[0K[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ l[0K[?25hs[0K[?25l
+[0K[?25h[0;34;42mcode_source[0m  [0;32;92medit_R_object.R[0m  [0;32;92medit_object_R_code.Rproj[0m  [0;32;92mgadget.py[0m  [0;32;92mlncRNA_article.md[0m  [0;32;92mlogo.png[0m  [0;32;92mobject_R.Rmd[0m[0K[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ c[0K[?25hd[0K[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ c[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ c[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ i[0K[?25hm[0Kp[0Ko[0Kr[0K[91G[90G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ impo[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ imp[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ im[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ i[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ a[0K[?25hp[0Kt[0K[89G[88G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ ap[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ a[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ s[0K[?25h[?25lu[0K[86G[?25h[87G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sud[0K[?25ho[0Ka[0K[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo[0K[?25h[90G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo a[0K[?25hp[0Kt[0K[94G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt i[0K[?25hn[0Ks[0Ka[0Kl[0Kl[0K[101G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt insall i[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt insall[0K[101G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt insall p[0K[?25hy[0Kt[0Kh[0Ko[0Kn[0K3[0K[?25l
+[0K[?25hE: Invalid operation insall[0K[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt insall python3[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ ls[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install python[0K[?25h3[0K[?25l
+[0K[?25h[?25lReading package lists... 0%[0K[1G[?25hReading package lists... Done[0K[?25l
+[0K[?25h[?25lBuilding dependency tree... 50%[0K[1G[?25hBuilding dependency tree[0K[?25l
+Reading state information... Done[0K
+python3 is already the newest version (3.6.5-3ubuntu1).[0K
+[0K[?25hThe following package was automatically installed and is no longer required:[0K[?25l
+  libfreetype6[0K
+Use 'sudo apt autoremove' to remove it.[0K
+[0K[?25h0 upgraded, 0 newly installed, 0 to remove and 66 not upgraded.[0K[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install python3[0K[?25h[108G[107G[106G[105G[104G[103G[102G[101G[102G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install ipython3[0K[103G[?25h[?25l
+[0K[?25h[?25lReading package lists... 0%[0K[1G[?25hReading package lists... Done[0K[?25l
+Building dependency tree... 0%[0K[1G[?25h[?25lBuilding dependency tree... 50%[0K[1G[?25hBuilding dependency tree[0K[?25l
+Reading state information... Done[0K
+[0K[?25hSome packages could not be installed. This may mean that you have[0K[?25l
+requested an impossible situation or if you are using the unstable[0K
+distribution that some required packages have not yet been created[0K
+or been moved out of Incoming.[0K
+The following information may help to resolve the situation:[0K
+[0K
+The following packages have unmet dependencies:[0K
+[0K[?25h ipython3 : Depends: python3-ipython (= 5.5.0-1) but it is not going to be installed[0K[?25l
+[0K[?25hE: Unable to correct problems, you have held broken packages.[0K[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install ipython3[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ sudo apt install ipython[0K[?25h[?25l
+[0K[?25h[?25lReading package lists... 0%[0K[1G[?25hReading package lists... Done[0K[?25l
+Building dependency tree... 0%[0K[1G[?25h[?25lBuilding dependency tree... 50%[0K[1G[?25hBuilding dependency tree[0K[?25l
+Reading state information... Done[0K
+[0K[?25hSome packages could not be installed. This may mean that you have[0K[?25l
+requested an impossible situation or if you are using the unstable[0K
+distribution that some required packages have not yet been created[0K
+or been moved out of Incoming.[0K
+The following information may help to resolve the situation:[0K
+[0K
+The following packages have unmet dependencies:[0K
+[0K[?25h ipython : Depends: python-ipython (= 5.5.0-1) but it is not going to be installed[0K[?25l
+E: Unable to correct problems, you have held broken packages.[0K
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ p[0K[?25h[?25ly[0K[86G[?25h[87G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ pyt[0K[?25h[?25lh[0K[88G[?25h[89G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ pytho[0K[?25hn[0K[?25l
+[0K[?25h[?25l
+Command 'python' not found, but can be installed with:[0K
+[0K
+sudo apt install python3[0K
+sudo apt install python[0K
+sudo apt install python-minimal[0K
+[0K
+You also have python3 installed, you can run 'python3' instead.[0K
+[0K
+[0K[?25h[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ p[0K[?25hy[0Kth[0Ko[0Kn[0K3[0K[?25l
+[0K[?25hPython 3.6.5 (default, Apr  1 2018, 05:46:30)[0K[?25l
+[GCC 7.3.0] on linux[0K
+Type "help", "copyright", "credits" or "license" for more information.[0K
+[0K[?25h>>>[0K[5G[?25l>>> i[0K[?25hm[0Kp[0Kr[0Ko[0K[?25l>>> impr[0K[?25h[?25l>>> imp[0K[?25ho[0Kr[0K[11G[?25l>>> impor t[0K[?25h[?25l>>> impor[0K[11G[?25h[10G[?25l>>> import[0K[?25h[12G[?25l>>> import t[0K[?25he[0Ks[0Kt[0K[?25l>>> import tes[0K[?25h[?25l>>> import te[0K[?25h[?25l>>> import t[0K[?25h[?25l>>> import[0K[12G[?25h[11G[?25l>>> impor[0K[?25h[?25l>>> impo[0K[?25h[?25l>>> imp[0K[?25h[?25l>>> im[0K[?25h[?25l>>> i[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> i[0K[?25hi[0K[?25l>>> i[0K[7G[?25h[6G[?25l>>>[0K[5G[?25h[?25l>>> i[0K[?25hm[0Kp[0Ko[0Kr[0Kt[0K[12G[?25l>>> import g[0K[?25ha[0Kd[0Kg[0K[?25le[0K[16G[?25h[17G[?25l>>> import gadget[0K[?25h[?25l
+[0K[?25hTraceback (most recent call last):[0K[?25l
+  File "<stdin>", line 1, in <module>[0K
+  File "/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code/gadget.py", line 14[0K
+    print " File removed! " + file_path[0K
+                          ^[0K
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print(" File removed! " + file_path)?[0K
+>>>[0K[5G[?25h[?25l>>> import gadget[0K[5G[?25h[18G[?25l
+>>>[0K[5G[?25h[?25l>>> d[0K[5G[?25h[6G[?25l>>> de[0K[?25hl[0K[?25ll[0K[8G[?25h[9G[?25l>>> del[0K[?25h[?25l>>> de[0K[?25h[?25l>>> d[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> d[0K[?25he[0Kl[0K_[0K[?25l>>> del[0K[?25h[?25l>>> de[0K[?25h[?25l>>> d[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> g[0K[?25ha[0Kd[0Kg[0Ka[0K[?25l>>> gadg[0K[?25h[?25l>>> gad[0K[?25hg[0K[?25le[0K[9G[?25h[10G[?25l>>> gadgetr[0K[11G[?25h[12G[?25l>>> gadget[0K[?25h.[0Kf[0K[?25l>>> gadget.[0K[?25hd[0Kel_file([0K[25G[21G[?25l>>> gadget.del_file(r[0K[?25ho[0Kund([0K[?25l>>> gadget.del_file(round[0K[27G[?25h[26G[?25l>>> gadget.del_file(roun[0K[?25h[?25l>>> gadget.del_file(rou[0K[?25h[?25l>>> gadget.del_file(ro[0K[?25h[?25lo[0K[23G[?25h[24G[?25l>>> gadget.del_file(root[0K[?25h_[0Kd[0Ki[0Kr[0K=[0K'[0K'[0K[?25l>>> gadget.del_file(root_dir='[0K[32G[?25h[31G[?25l>>> gadget.del_file(root_dir='.[0K[?25h'[0K,[0Kf[0Ki[0Kl[0Ke[0K=[0K'[0Kl[0Ko[0Kg[0Ko[0K.[0Kp[0Kn[0Kg[0K[?25l'[0K[48G[?25h[49G[?25l>>> gadget.del_file(root_dir='.',file='logo.png')[0K[?25h[?25l
+Traceback (most recent call last):[0K
+  File "<stdin>", line 1, in <module>[0K
+  File "/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code/gadget.py", line 16, in del_file[0K
+    del_bmp(file_path)[0K
+NameError: name 'del_bmp' is not defined[0K
+>>>[0K[5G[?25h[?25l>>> e[0K[?25hx[0Ki[0Kt[0K([0K[?25l>>> exit[0K[?25h[?25l
+Use exit() or Ctrl-D (i.e. EOF) to exit[0K
+>>>[0K[5G[?25h[?25l>>> exit[0K[?25h[?25l()[0K[10G[?25h[11G[?25l
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ p[0K[?25hy[0Kth[0Ko[0Kn[0K34[0K[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ python3[0K[?25h[?25l
+[0K[?25hPython 3.6.5 (default, Apr  1 2018, 05:46:30)[0K[?25l
+[GCC 7.3.0] on linux[0K
+Type "help", "copyright", "credits" or "license" for more information.[0K
+>>>[0K[5G[?25h[?25l>>> i[0K[?25hm[0Kp[0Ko[0Ko[0Kr[0K[12G[?25l>>> impoor t[0K[?25h[?25l>>> impoor[0K[12G[?25h[11G[?25l>>> impoo[0K[?25h[?25l>>> impo[0K[?25ht[0K[?25l>>> impo[0K[?25hr[0Kt[0K[12G[?25l>>> import g[0K[?25ha[0Kd[0Kg[0Ke[0Kt[0K[?25l
+>>>[0K[1G[?25h[5G[?25l>>> g[0K[?25ha[0Kd[0K[?25lg[0K[8G[?25h[9G[?25l>>> gadge[0K[?25ht[0K[12G[11G[?25l>>> gadget.[0K[?25h[?25ld[0K[12G[?25h[13G[?25l>>> gadget.de[0K[?25hl[0K_file([0K)[0K[?25l
+[0K[?25h File removed! ./logo.png[0K[?25l
+>>>[0K[5G[?25h[?25l>>> d[0K[?25hi[0Kr[0K[?25l>>> di[0K[?25h[?25l>>> d[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> s[0K[?25h[?25l
+[0K[?25hTraceback (most recent call last):[0K[?25l
+  File "<stdin>", line 1, in <module>[0K
+NameError: name 's' is not defined[0K
+>>>[0K[5G[?25h[?25l>>> kl[0K[?25hs[0K[?25l
+Traceback (most recent call last):[0K
+  File "<stdin>", line 1, in <module>[0K
+NameError: name 'kls' is not defined[0K
+>>>[0K[5G[?25h[?25l>>> l[0K[5G[?25h[?25l>>> lk[0K[?25hs[0K[?25l
+Traceback (most recent call last):[0K
+  File "<stdin>", line 1, in <module>[0K
+NameError: name 'lks' is not defined[0K
+>>>[0K[5G[?25h[?25l>>> kl[0K[?25hs[0K[?25l>>> kl[0K[8G[?25h[7G[?25l>>> k[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> l[0K[?25hs[0K[?25l
+Traceback (most recent call last):[0K
+  File "<stdin>", line 1, in <module>[0K
+NameError: name 'ls' is not defined[0K
+>>>[0K[5G[?25h[?25l>>> f[0K[?25hi[0Kl[0Kter([0K[?25l>>> filter[0K[12G[?25h[11G[?25l>>> filte[0K[11G[?25h[10G[?25l>>> fil[0K[?25h[?25l>>> fi[0K[8G[?25h[7G[?25l>>> f[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> e[0K[?25h[?25l>>>[0K[5G[?25h[?25l>>> e[0K[?25hx[0K[?25li[0K[7G[?25h[8G[?25l>>> exit[0K[?25h[?25l
+Use exit() or Ctrl-D (i.e. EOF) to exit[0K
+>>>[0K[5G[?25h[?25l>>> exit[0K[?25h([0K)[0K[?25l>>> exit([0K[?25h)[0K[?25l
+[0K[?25h[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ l[0K[?25hs[0K[?25l
+[0K[?25h[0;34;42mP101SC17122213_WTS_CE_data_release_20181129[0m  [0;34;42mcode_source[0m      [0;32;92medit_object_R_code.Rproj[0m  [0;32;92mlncRNA_article.md[0m[0K[?25l
+[0;34;42m__pycache__[0m                                  [0;32;92medit_R_object.R[0m  [0;32;92mgadget.py[0m                 [0;32;92mobject_R.Rmd[0m[0K
+[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ i[0K[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$[0K[85G[?25h[?25l[0;32;92ma@DESKTOP-G61AK8V[0m:[0;34;94m/mnt/e/duolin_work_dictionary/About_workflows/edit_object_R_code[0m$ p[0K[?25hy[0Kt[0Kh[0Ko[0Kn[0K3[0K[?25l
+[0K[?25hPython 3.6.5 (default, Apr  1 2018, 05:46:30)[0K[?25l
+[GCC 7.3.0] on linux[0K
+Type "help", "copyright", "credits" or "license" for more information.[0K
+>>>[0K[5G[?25h[?25l>>> i[0K[?25hm[0Kp[0Ko[0Kr[0Kt[0K[12G[?25l>>> import g[0K[?25ha[0Kd[0Kg[0K[?25la[0K[16G[?25h[17G[?25l>>> import gadg[0K[?25he[0K[?25lt[0K[17G[?25h[18G[?25l
+>>>[0K[5G[?25h[?25l>>> g[0K[?25he[0Kt[0K[?25l>>> ge[0K[?25h[?25l>>> g[0K[?25ha[0Kd[0Kg[0Ke[0Kt[0K.[0K[?25l
+gadget.del_file(  gadget.os[0K
+>>> gadget.[0K[?25h[?25l
+gadget.del_file(  gadget.os[0K
+>>> gadget.[0K[?25hd[0Ke[0Kl[0Kf[0K[?25l>>> gadget.del[0K[?25h_[0Kf[0Kile([0Kr[0K[?25lo[0K[22G[?25h[23G[?25l>>> gadget.del_file(roo[0K[23G[?25h[24G[?25l>>> gadget.del_file(ro[0K[24G[?25h[23G[?25l>>> gadget.del_file(r[0K[?25h[?25l>>> gadget.del_file([0K[?25hr[0Ko[0Ko[0Ko[0K[?25l>>> gadget.del_file(roo[0K[?25h[?25l>>> gadget.del_file(ro[0K[?25h[?25l>>> gadget.del_file(r[0K[?25h[?25l>>> gadget.del_file([0K[?25h[?25l'[0K[21G[?25h[22G[?25l>>> gadget.del_file('P101SC17122213_WTS_CE_data_release_20181129[0K[?25h[?25l'[0K[65G[?25h[66G[?25l>>> gadget.del_file('P101SC17122213_WTS_CE_data_release_20181129')[0K[?25h[?25l
+[0K[?25h File removed! P101SC17122213_WTS_CE_data_release_20181129/report/src/image/logo.png[0K[?25l
+>>>[0K[5G[?25h
